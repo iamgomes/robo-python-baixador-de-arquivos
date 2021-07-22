@@ -1,8 +1,10 @@
+import os
 from urllib.request import urlretrieve
+import requests
 
-def download(url, nome_arquivo):
-    print('Baixando arquivo {}'.format(nome_arquivo))
-    urlretrieve(url, nome_arquivo)
+def download(url, endereco):
+    print('Baixando arquivo em: {}'.format(endereco))
+    urlretrieve(url, endereco)
     print('Donwload finalizado!')
 
 if __name__ == '__main__':
@@ -11,21 +13,41 @@ if __name__ == '__main__':
     BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncmv2/IMP_{}_V2.csv'
     BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/IMP_{}_MUN.csv'
 
-    AnoIncio = 2015
+    AnoIncio = 2021
     AnoFim = 2022
 
-    for i in range(AnoIncio, AnoFim):
-        novo_nome_arquivo = 'EXP_{}_GERAL.csv'.format(i)
-        download(BASE_URL_EXP.format(i), novo_nome_arquivo)
 
     for i in range(AnoIncio, AnoFim):
-        novo_nome_arquivo = 'EXP_{}_MUN.csv'.format(i)
-        download(BASE_URL_EXPMUN.format(i), novo_nome_arquivo)
+        OUTPUT_DIR = 'EXP-GERAL'
+        if not os.path.isdir(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+
+        nome_arquivo = os.path.join(OUTPUT_DIR,'EXP_{}_GERAL.csv'.format(i))
+        download(BASE_URL_EXP.format(i), nome_arquivo)
 
     for i in range(AnoIncio, AnoFim):
-        novo_nome_arquivo = 'IMP_{}_GERAL.csv'.format(i)
-        download(BASE_URL_IMP.format(i), novo_nome_arquivo)
+        OUTPUT_DIR = 'EXP-MUNICIPAL'
+        if not os.path.isdir(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+
+        nome_arquivo = os.path.join(OUTPUT_DIR,'EXP_{}_MUN.csv'.format(i))
+        download(BASE_URL_EXPMUN.format(i), nome_arquivo)
 
     for i in range(AnoIncio, AnoFim):
-        novo_nome_arquivo = 'IMP_{}_MUN.csv'.format(i)
-        download(BASE_URL_IMPMUN.format(i), novo_nome_arquivo)
+        OUTPUT_DIR = 'IMP-GERAL'
+        if not os.path.isdir(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+
+        nome_arquivo = os.path.join(OUTPUT_DIR,'IMP_{}_GERAL.csv'.format(i))
+        download(BASE_URL_IMP.format(i), nome_arquivo)
+
+    for i in range(AnoIncio, AnoFim):
+        OUTPUT_DIR = 'IMP-MUNICIPAL'
+        if not os.path.isdir(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+
+        nome_arquivo =  os.path.join(OUTPUT_DIR,'IMP_{}_MUN.csv'.format(i))
+        download(BASE_URL_IMPMUN.format(i), nome_arquivo)
+
+    print('\nMARAVILHA')
+    print('\nTodos os arquivos foram baixados com sucesso!')
