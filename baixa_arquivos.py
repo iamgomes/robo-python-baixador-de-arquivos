@@ -1,6 +1,7 @@
 import os
 from urllib.request import urlretrieve
-import requests
+
+# https://www.gov.br/produtividade-e-comercio-exterior/pt-br/assuntos/comercio-exterior/estatisticas/base-de-dados-bruta
 
 def download(url, endereco):
     print('Baixando arquivo em: {}'.format(endereco))
@@ -13,7 +14,7 @@ if __name__ == '__main__':
     BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncmv2/IMP_{}_V2.csv'
     BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/IMP_{}_MUN.csv'
 
-    AnoIncio = 2021
+    AnoIncio = 2014
     AnoFim = 2022
 
 
