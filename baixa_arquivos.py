@@ -26,17 +26,17 @@ BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/I
 
 
 # período para os downloads
-AnoIncio = 2021
-AnoFim = date.today().year +1 # retorna o corrente ano +1
+anoIncio = 2021
+anoFim = date.today().year +1 # retorna o corrente ano +1
 
 
 if __name__ == '__main__':
     print('---INICIANDO DOWNLOAD DOS ARQUIVOS---\n')
 
-    loopDownload(AnoIncio, AnoFim, 'EXP-GERAL', BASE_URL_EXP, 'EXP_{}_GERAL.csv')
-    loopDownload(AnoIncio, AnoFim, 'EXP-MUNICIPAL', BASE_URL_EXP, 'EXP_{}_MUN.csv')
-    loopDownload(AnoIncio, AnoFim, 'IMP-GERAL', BASE_URL_EXP, 'IMP_{}_GERAL.csv')
-    loopDownload(AnoIncio, AnoFim, 'IMP-MUNICIPAL', BASE_URL_EXP, 'IMP_{}_MUN.csv')
+    loopDownload(anoIncio, anoFim, 'EXP-GERAL', BASE_URL_EXP, 'EXP_{}_GERAL.csv')
+    loopDownload(anoIncio, anoFim, 'EXP-MUNICIPAL', BASE_URL_EXP, 'EXP_{}_MUN.csv')
+    loopDownload(anoIncio, anoFim, 'IMP-GERAL', BASE_URL_EXP, 'IMP_{}_GERAL.csv')
+    loopDownload(anoIncio, anoFim, 'IMP-MUNICIPAL', BASE_URL_EXP, 'IMP_{}_MUN.csv')
 
     print('\nMARAVILHA')
     print('\nTodos os arquivos foram baixados com sucesso!\n')
