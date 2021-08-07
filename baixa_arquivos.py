@@ -1,54 +1,42 @@
 import os
+from datetime import date
 from urllib.request import urlretrieve
 
 # https://www.gov.br/produtividade-e-comercio-exterior/pt-br/assuntos/comercio-exterior/estatisticas/base-de-dados-bruta
 
 def download(url, endereco):
-    print('Baixando arquivo em: {}'.format(endereco))
+    print('Baixando arquivos em: {}'.format(endereco))
     urlretrieve(url, endereco)
-    print('Donwload finalizado!')
+    print('Donwload finalizado!\n')
+
+
+def loopDownload(AnoIncio, AnoFim, OutputDir, url, NomeArquivo):
+    for i in range(AnoIncio, AnoFim):
+        if not os.path.isdir(OutputDir):
+            os.makedirs(OutputDir)
+        nome_arquivo = os.path.join(OutputDir, NomeArquivo.format(i))
+        download(url.format(i), nome_arquivo)
+
+
+# links onde os arquivos estão
+BASE_URL_EXP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_{}.csv'    
+BASE_URL_EXPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/EXP_{}_MUN.csv'
+BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncmv2/IMP_{}_V2.csv'
+BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/IMP_{}_MUN.csv'
+
+
+# período para os downloads
+AnoIncio = 2021
+AnoFim = date.today().year +1 # retorna o corrente ano +1
+
 
 if __name__ == '__main__':
-    BASE_URL_EXP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_{}.csv'    
-    BASE_URL_EXPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/EXP_{}_MUN.csv'
-    BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncmv2/IMP_{}_V2.csv'
-    BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/IMP_{}_MUN.csv'
+    print('---INICIANDO DOWNLOAD DOS ARQUIVOS---\n')
 
-    AnoIncio = 2014
-    AnoFim = 2022
-
-
-    for i in range(AnoIncio, AnoFim):
-        OUTPUT_DIR = 'EXP-GERAL'
-        if not os.path.isdir(OUTPUT_DIR):
-            os.makedirs(OUTPUT_DIR)
-
-        nome_arquivo = os.path.join(OUTPUT_DIR,'EXP_{}_GERAL.csv'.format(i))
-        download(BASE_URL_EXP.format(i), nome_arquivo)
-
-    for i in range(AnoIncio, AnoFim):
-        OUTPUT_DIR = 'EXP-MUNICIPAL'
-        if not os.path.isdir(OUTPUT_DIR):
-            os.makedirs(OUTPUT_DIR)
-
-        nome_arquivo = os.path.join(OUTPUT_DIR,'EXP_{}_MUN.csv'.format(i))
-        download(BASE_URL_EXPMUN.format(i), nome_arquivo)
-
-    for i in range(AnoIncio, AnoFim):
-        OUTPUT_DIR = 'IMP-GERAL'
-        if not os.path.isdir(OUTPUT_DIR):
-            os.makedirs(OUTPUT_DIR)
-
-        nome_arquivo = os.path.join(OUTPUT_DIR,'IMP_{}_GERAL.csv'.format(i))
-        download(BASE_URL_IMP.format(i), nome_arquivo)
-
-    for i in range(AnoIncio, AnoFim):
-        OUTPUT_DIR = 'IMP-MUNICIPAL'
-        if not os.path.isdir(OUTPUT_DIR):
-            os.makedirs(OUTPUT_DIR)
-
-        nome_arquivo =  os.path.join(OUTPUT_DIR,'IMP_{}_MUN.csv'.format(i))
-        download(BASE_URL_IMPMUN.format(i), nome_arquivo)
+    loopDownload(AnoIncio, AnoFim, 'EXP-GERAL', BASE_URL_EXP, 'EXP_{}_GERAL.csv')
+    loopDownload(AnoIncio, AnoFim, 'EXP-MUNICIPAL', BASE_URL_EXP, 'EXP_{}_MUN.csv')
+    loopDownload(AnoIncio, AnoFim, 'IMP-GERAL', BASE_URL_EXP, 'IMP_{}_GERAL.csv')
+    loopDownload(AnoIncio, AnoFim, 'IMP-MUNICIPAL', BASE_URL_EXP, 'IMP_{}_MUN.csv')
 
     print('\nMARAVILHA')
-    print('\nTodos os arquivos foram baixados com sucesso!')
+    print('\nTodos os arquivos foram baixados com sucesso!\n')
