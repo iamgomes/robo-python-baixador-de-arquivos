@@ -58,7 +58,7 @@ BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/I
 BASE_URL_EMPRESAS = 'https://balanca.economia.gov.br/balanca/outras/EMPRESAS_CADASTRO_{}.xlsx'
 
 # período para os downloads
-anoIncio = 1997
+anoIncio = 2016
 anoFim = date.today().year +1 # retorna o corrente ano +1
 
 # nome das planilhas nos arquivos excel das empresas
@@ -70,9 +70,9 @@ if __name__ == '__main__':
     print('---INICIANDO DOWNLOAD DOS ARQUIVOS---\n')
 
     loopDownload(anoIncio, anoFim, 'EXP-GERAL', BASE_URL_EXP, 'EXP_{}_GERAL.csv')
-    loopDownload(anoIncio, anoFim, 'EXP-MUNICIPAL', BASE_URL_EXP, 'EXP_{}_MUN.csv')
-    loopDownload(anoIncio, anoFim, 'IMP-GERAL', BASE_URL_EXP, 'IMP_{}_GERAL.csv')
-    loopDownload(anoIncio, anoFim, 'IMP-MUNICIPAL', BASE_URL_EXP, 'IMP_{}_MUN.csv')
+    loopDownload(anoIncio, anoFim, 'EXP-MUNICIPAL', BASE_URL_EXPMUN, 'EXP_{}_MUN.csv')
+    loopDownload(anoIncio, anoFim, 'IMP-GERAL', BASE_URL_IMP, 'IMP_{}_GERAL.csv')
+    loopDownload(anoIncio, anoFim, 'IMP-MUNICIPAL', BASE_URL_IMPMUN, 'IMP_{}_MUN.csv')
     loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-EXP', PlanilhaExp, BASE_URL_EMPRESAS, 'EXP_{}_CNPJ.csv')
     loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-IMP', PlanilhaImp, BASE_URL_EMPRESAS, 'IMP_{}_CNPJ.csv')
 
