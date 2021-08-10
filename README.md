@@ -8,3 +8,4 @@ Base de dados do Comex Stat, tabelas de correlações de códigos e calendário 
 * Importação-Geral
 * Exportação-Municipal
 * Importação-Municipal
+* Empresas
