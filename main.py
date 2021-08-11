@@ -28,15 +28,15 @@ if __name__ == '__main__':
 
     print('1 - Arquivos de Exportação e Importação\n')
 
-#    loopDownload(anoIncio, anoFim, 'EXP-GERAL', BASE_URL_EXP, 'EXP_{}_GERAL.csv')
-#    loopDownload(anoIncio, anoFim, 'EXP-MUNICIPAL', BASE_URL_EXPMUN, 'EXP_{}_MUN.csv')
+    loopDownload(anoIncio, anoFim, 'EXP-GERAL', BASE_URL_EXP, 'EXP_{}_GERAL.csv')
+    loopDownload(anoIncio, anoFim, 'EXP-MUNICIPAL', BASE_URL_EXPMUN, 'EXP_{}_MUN.csv')
     loopDownload(anoIncio, anoFim, 'IMP-GERAL', BASE_URL_IMP, 'IMP_{}_GERAL.csv')
-#    loopDownload(anoIncio, anoFim, 'IMP-MUNICIPAL', BASE_URL_IMPMUN, 'IMP_{}_MUN.csv')
+    loopDownload(anoIncio, anoFim, 'IMP-MUNICIPAL', BASE_URL_IMPMUN, 'IMP_{}_MUN.csv')
 
     print('2 - Arquivos de Empresas Exportadoras e Importadoras\n')
 
-#    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-EXP', PlanilhaExp, BASE_URL_EMPRESAS, 'EXP_{}_CNPJ.csv')
-#    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-IMP', PlanilhaImp, BASE_URL_EMPRESAS, 'IMP_{}_CNPJ.csv')
+    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-EXP', PlanilhaExp, BASE_URL_EMPRESAS, 'EXP_{}_CNPJ.csv')
+    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-IMP', PlanilhaImp, BASE_URL_EMPRESAS, 'IMP_{}_CNPJ.csv')
 
     print('MARAVILHA')
     print('\nTodos os arquivos foram baixados com sucesso!\n')
