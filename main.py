@@ -10,12 +10,12 @@ from src.downloadEmpresas import loopDownloadEmpresas
 # links onde os arquivos estão
 BASE_URL_EXP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_{}.csv'    
 BASE_URL_EXPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/EXP_{}_MUN.csv'
-BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncmv2/IMP_{}_V2.csv'
+BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncmv2/IMP_{}.csv'
 BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/IMP_{}_MUN.csv'
 BASE_URL_EMPRESAS = 'https://balanca.economia.gov.br/balanca/outras/EMPRESAS_CADASTRO_{}.xlsx'
 
 # período para os downloads
-anoIncio = 2021
+anoIncio = 2016
 anoFim = date.today().year +1 # retorna o corrente ano +1
 
 # nome das planilhas nos arquivos excel das empresas
