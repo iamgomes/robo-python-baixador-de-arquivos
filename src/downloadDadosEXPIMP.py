@@ -1,11 +1,15 @@
 import os
-from urllib.request import urlretrieve
+import requests
 
 
 def download(url, endereco):
-    print('Baixando arquivos em: {}'.format(endereco))
-    urlretrieve(url, endereco)
-    print('Donwload finalizado!\n')
+    resposta = requests.get(url, verify=False)
+    if resposta.status_code == requests.codes.OK:
+        with open(endereco, 'wb') as novo_arquivo:
+                novo_arquivo.write(resposta.content)
+        print("Download finalizado. Arquivo salvo em: {}".format(endereco))
+    else:
+        resposta.raise_for_status()
 
 
 def loopDownload(AnoIncio, AnoFim, OutputDir, url, NomeArquivo):

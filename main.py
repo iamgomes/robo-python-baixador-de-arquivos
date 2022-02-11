@@ -1,6 +1,6 @@
 from datetime import date
 from src.downloadDadosEXPIMP import loopDownload
-from src.downloadEmpresas import loopDownloadEmpresas
+#from src.downloadEmpresas import loopDownloadEmpresas
 
 
 # https://www.gov.br/produtividade-e-comercio-exterior/pt-br/assuntos/comercio-exterior/estatisticas/base-de-dados-bruta
@@ -12,11 +12,11 @@ BASE_URL_EXP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_
 BASE_URL_EXPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/EXP_{}_MUN.csv'
 BASE_URL_IMP = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/IMP_{}.csv'
 BASE_URL_IMPMUN = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/mun/IMP_{}_MUN.csv'
-BASE_URL_EMPRESAS = 'https://balanca.economia.gov.br/balanca/outras/EMPRESAS_CADASTRO_{}.xlsx'
+#BASE_URL_EMPRESAS = 'https://balanca.economia.gov.br/balanca/outras/EMPRESAS_CADASTRO_{}.xlsx'
 
 # período para os downloads
-anoIncio = 2016
-anoFim = date.today().year +1 # retorna o corrente ano +1
+anoIncio = date.today().year -1
+anoFim = date.today().year +1
 
 # nome das planilhas nos arquivos excel das empresas
 PlanilhaExp = 'EXP_CNPJ14'
@@ -33,10 +33,10 @@ if __name__ == '__main__':
     loopDownload(anoIncio, anoFim, 'IMP-GERAL', BASE_URL_IMP, 'IMP_{}_GERAL.csv')
     loopDownload(anoIncio, anoFim, 'IMP-MUNICIPAL', BASE_URL_IMPMUN, 'IMP_{}_MUN.csv')
 
-    print('2 - Arquivos de Empresas Exportadoras e Importadoras\n')
+#    print('2 - Arquivos de Empresas Exportadoras e Importadoras\n')
 
-    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-EXP', PlanilhaExp, BASE_URL_EMPRESAS, 'EXP_{}_CNPJ.csv')
-    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-IMP', PlanilhaImp, BASE_URL_EMPRESAS, 'IMP_{}_CNPJ.csv')
+#    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-EXP', PlanilhaExp, BASE_URL_EMPRESAS, 'EXP_{}_CNPJ.csv')
+#    loopDownloadEmpresas(anoIncio, anoFim, 'Empresas-IMP', PlanilhaImp, BASE_URL_EMPRESAS, 'IMP_{}_CNPJ.csv')
 
     print('MARAVILHA')
     print('\nTodos os arquivos foram baixados com sucesso!\n')
